@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!-- begin::Head -->
+<head>
+    <meta charset="utf-8"/>
+    <title>
+        医学文本中文分类系统| 快速分词
+    </title>
+    <meta name="description" content="Latest updates and statistic charts">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--begin::Web font -->
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+    <script src="static/assets/app/js/echarts.min.js"></script>
+    <script>
+        WebFont.load({
+            google: {"families": ["Montserrat:300,400,500,600,700", "Roboto:300,400,500,600,700"]},
+            active: function () {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+    <!--end::Web font -->
+    <!--begin::Base Styles -->
+    <!--begin::Page Vendors -->
+    <link href="static/assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css"/>
+    <!--end::Page Vendors -->
+    <link href="static/assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css"/>
+    <link href="static/assets/demo/demo4/base/style.bundle.css" rel="stylesheet" type="text/css"/>
+    <!--end::Base Styles -->
+    <link rel="shortcut icon" href="static/assets/demo/demo4/media/img/logo/favicon.ico"/>
+</head>
+<!-- end::Head -->
+<!-- end::Body -->
+<body style="background-image: url(static/assets/app/media/img/bg/bg-1.jpg)"
+      class="m-page--boxed m-body--fixed m-header--static m-aside--offcanvas-default">
+<!-- begin:: Page -->
+<div class="m-grid m-grid--hor m-grid--root m-page">
+    <!-- begin::Header -->
+    <header class="m-grid__item	m-grid m-grid--desktop m-grid--hor-desktop  m-header ">
+        <div class="m-grid__item m-grid__item--fluid m-grid m-grid--desktop m-grid--hor-desktop m-container m-container--responsive m-container--xxl">
+            <div class="m-grid__item m-grid__item--fluid m-grid m-grid--desktop m-grid--ver-desktop m-header__wrapper">
+                <!-- begin::Brand -->
+                <div class="m-grid__item m-brand">
+                    <div class="m-stack m-stack--ver m-stack--general m-stack--inline">
+                        <div class="m-stack__item m-stack__item--middle m-brand__logo">
+                            <a href="index.html" class="m-brand__logo-wrapper">
+                                <img alt="" src="static/assets/demo/demo4/media/img/logo/logo.png"/>
+                            </a>
+                            <a style="color: #fff;">医学文本分类系统</a>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- end::Brand -->
+                <!-- begin::Topbar -->
+                <!-- end::Topbar -->
+            </div>
+        </div>
+    </header>
+    <!-- end::Header -->
+    <!-- begin::Body -->
+    <div class="m-grid__item m-grid__item--fluid m-grid m-grid m-grid--hor m-container m-container--responsive m-container--xxl">
+        <div class="m-grid__item m-grid__item--fluid m-grid m-grid--hor-desktop m-grid--desktop m-body">
+            <div class="m-grid__item m-body__nav">
+                <div class="m-stack m-stack--ver m-stack--desktop">
+                    <!-- begin::Horizontal Menu -->
+                    <div class="m-stack__item m-stack__item--middle m-stack__item--fluid">
+                        <button class="m-aside-header-menu-mobile-close  m-aside-header-menu-mobile-close--skin-light "
+                                id="m_aside_header_menu_mobile_close_btn">
+                            <i class="la la-close"></i>
+                        </button>
+                        <div id="m_header_menu"
+                             class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-light m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-light m-aside-header-menu-mobile--submenu-skin-light ">
+                            <ul class="m-menu__nav  m-menu__nav--submenu-arrow ">
+                                <li class="m-menu__item m-menu__item--active" aria-haspopup="true">
+                                    <a href="index.html" class="m-menu__link ">
+                                        <span class="m-menu__item-here"></span>
+                                        <span class="m-menu__link-text">
+													默认分类器
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- end::Horizontal Menu -->
+                </div>
+            </div>
+            <!--详细内容模板开始-->
+            <div class="m-grid__item m-grid__item--fluid m-grid m-grid--desktop m-grid--ver-desktop m-body__content">
+                <div class="m-grid__item m-grid__item--fluid m-wrapper">
+                    <!-- BEGIN: Subheader -->
+                    <div class="m-subheader ">
+                        <div class="d-flex align-items-center">
+                            <div class="mr-auto">
+                                <h3 class="m-subheader__title ">
+                                   现代医学中文文本分类系统
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END: Subheader -->
+                    <div class="m-content">
+                        <!--Begin::Section-->
+                        <div class="row">
+                            <div class="col-xl-6">
+                                <textarea class="form-control" id="m_autosize_2" rows="3" style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 200px;"></textarea>
+                                <div class="m-separator m-separator--space m-separator--dashed" style="margin: 10px;"></div>
+                                <button type="button" class="btn btn-primary m-btn m-btn--custom"
+                                        style="width: 100%;overflow:hidden;">
+                                    开始分词
+                                </button>
+                                <div class="m-separator m-separator--space m-separator--dashed" style="margin: 10px;"></div>
+                                <button type="button" class="btn btn-primary m-btn m-btn--custom"
+                                        style="width: 100%;overflow:hidden;">
+                                    医学实体可视化
+                                </button>
+
+                            </div>
+                            <div class="col-xl-6">
+                                <textarea class="form-control" id="m_autosize_3" rows="3" style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 200px;"></textarea>
+                                <div class="m-separator m-separator--space m-separator--dashed" style="margin: 10px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End::Section-->
+                    <!--Begin::Section-->
+                    <div class="row">
+                        <div class="col-xl-8">
+                            <!--begin:: Widgets/Product Sales-->
+                            <div class="m-portlet m-portlet--bordered-semi m-portlet--space m-portlet--full-height  m-portlet--rounded">
+                                <div class="m-portlet__head">
+                                    <div class="m-portlet__head-caption">
+                                        <div class="m-portlet__head-title">
+                                            <h3 class="m-portlet__head-text">
+                                                可视化图谱
+                                                <span class="m-portlet__head-desc">
+													（部分医学实体可能未收录）
+                                                    </span>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="m-portlet__body">
+                                    <div class="m-portlet__body" style="height: 600px;">
+                                        <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+                                        <div id="main" style="width: 600px;height:400px;"></div>
+
+                                        <script type="text/javascript">
+                                            // 基于准备好的dom，初始化echarts实例
+                                            var myChart = echarts.init(document.getElementById('main'));
+                                            option = {
+                                                tooltip: {},
+                                                animationDurationUpdate: 1500,
+                                                animationEasingUpdate: 'quinticInOut',
+                                                series : [
+                                                    {
+                                                        type: 'graph',
+                                                        layout: 'none',
+                                                        symbolSize: 50,
+                                                        roam: true,
+                                                        label: {
+                                                            normal: {
+                                                                show: true
+                                                            }
+                                                        },
+                                                        edgeSymbol: ['circle', 'arrow'],
+                                                        edgeSymbolSize: [4, 10],
+                                                        edgeLabel: {
+                                                            normal: {
+                                                                textStyle: {
+                                                                    fontSize: 20
+                                                                }
+                                                            }
+                                                        },
+                                                        data: [{
+                                                            name: '节点1',
+                                                            x: 300,
+                                                            y: 300
+                                                        }, {
+                                                            name: '节点2',
+                                                            x: 800,
+                                                            y: 300
+                                                        }, {
+                                                            name: '节点3',
+                                                            x: 550,
+                                                            y: 100
+                                                        }, {
+                                                            name: '节点4',
+                                                            x: 550,
+                                                            y: 500
+                                                        }],
+                                                        // links: [],
+                                                        links: [{
+                                                            source: 0,
+                                                            target: 1,
+                                                            symbolSize: [5, 20],
+                                                            label: {
+                                                                normal: {
+                                                                    show: true
+                                                                }
+                                                            },
+                                                            lineStyle: {
+                                                                normal: {
+                                                                    width: 5,
+                                                                    curveness: 0.2
+                                                                }
+                                                            }
+                                                        }, {
+                                                            source: '节点2',
+                                                            target: '节点1',
+                                                            label: {
+                                                                normal: {
+                                                                    show: true
+                                                                }
+                                                            },
+                                                            lineStyle: {
+                                                                normal: { curveness: 0.2 }
+                                                            }
+                                                        }, {
+                                                            source: '节点1',
+                                                            target: '节点3'
+                                                        }, {
+                                                            source: '节点2',
+                                                            target: '节点3'
+                                                        }, {
+                                                            source: '节点2',
+                                                            target: '节点4'
+                                                        }, {
+                                                            source: '节点1',
+                                                            target: '节点4'
+                                                        }],
+                                                        lineStyle: {
+                                                            normal: {
+                                                                opacity: 0.9,
+                                                                width: 2,
+                                                                curveness: 0
+                                                            }
+                                                        }
+                                                    }
+                                                ]
+                                            };
+                                            myChart.setOption(option);
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end:: Widgets/Product Sales-->
+                        </div>
+
+                    </div>
+                    <!--End::Section-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- begin::Body -->
+<!-- begin::Footer -->
+<footer class="m-grid__item		m-footer ">
+    <div class="m-container m-container--responsive m-container--xxl">
+        <div class="m-footer__wrapper">
+            <div class="m-stack m-stack--flex-tablet-and-mobile m-stack--ver m-stack--desktop">
+                <div class="m-stack__item m-stack__item--left m-stack__item--middle m-stack__item--last">
+								<span class="m-footer__copyright">
+									2019 &copy; Powered By
+									<a href="http://www.xpedia.cc/xpedia/TimePage.html" class="m-link">
+										菲利斯前端实验室
+									</a>
+								</span>
+                </div>
+                <div class="m-stack__item m-stack__item--right m-stack__item--middle m-stack__item--first">
+                    <ul class="m-footer__nav m-nav m-nav--skin-dark m-nav--inline m--pull-right">
+                        <li class="m-nav__item">
+                            <a href="#" class="m-nav__link">
+											<span class="m-nav__link-text">
+												关于
+											</span>
+                            </a>
+                        </li>
+                        <li class="m-nav__item">
+                            <a href="#" class="m-nav__link">
+											<span class="m-nav__link-text">
+												隐私信息
+											</span>
+                            </a>
+                        </li>
+                        <li class="m-nav__item">
+                            <a href="http://www.xpedia.cc/xpedia/TimePage.html" class="m-nav__link">
+											<span class="m-nav__link-text">
+												TimePage
+											</span>
+                            </a>
+                        </li>
+                        <li class="m-nav__item">
+                            <a href="#" class="m-nav__link">
+											<span class="m-nav__link-text">
+												相关说明
+											</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+<!-- end:: Page -->
+<!-- begin::Scroll Top -->
+<div class="m-scroll-top m-scroll-top--skin-top" data-toggle="m-scroll-top" data-scroll-offset="500"
+     data-scroll-speed="300">
+    <i class="la la-arrow-up"></i>
+</div>
+<!-- end::Scroll Top -->
+<!--begin::Base Scripts -->
+<script src="static/assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+<script src="static/assets/demo/demo4/base/scripts.bundle.js" type="text/javascript"></script>
+<!--end::Base Scripts -->
+<!--begin::Page Vendors -->
+<script src="static/assets/vendors/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
+<script src="static/assets/vendors/custom/jquery-ui/jquery-ui.bundle.js" type="text/javascript"></script>
+<!--end::Page Vendors -->
+<!--begin::Page Snippets -->
+<script src="static/assets/app/js/dashboard.js" type="text/javascript"></script>
+
+<script src="static/assets/demo/demo4/base/draggable.js" type="text/javascript"></script>
+<!--end::Page Snippets -->
+</body>
+<!-- end::Body -->
+</html>
